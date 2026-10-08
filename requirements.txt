@@ -1,0 +1,2 @@
+# No dependencies. Stdlib only (urllib, json, argparse).
+# This file exists so the project is pip-installable in the future.
