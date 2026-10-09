@@ -15,7 +15,21 @@ python scout.py --out digest.md
 
 # machine-readable
 python scout.py --json > repos.json
+
+# let Claude (Haiku) rate every repo REAL vs HYPE for signal-vs-hype
+export ANTHROPIC_API_KEY="sk-ant-..."
+python scout.py --claude-filter
 ```
+
+## Claude hype-filter (optional)
+
+Star counts can be gamed and READMEs can lie. With an Anthropic API key,
+`--claude-filter` sends the digest to Claude Haiku — cheap classification
+work on the cheap model — which rates each repo `REAL` (working code, real
+utility) or `HYPE` (marketing fluff, star-bait). Verdicts are labeled in the
+digest, never silently dropped. Rates at most 25 repos per run to bound API
+cost; `--claude-model` overrides the default (`claude-haiku-4-5`). Still
+stdlib only — direct Messages API calls, no SDK.
 
 ## How it works
 
